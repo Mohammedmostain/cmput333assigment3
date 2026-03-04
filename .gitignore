@@ -1,0 +1,17 @@
+.venv/
+*.ots
+*.sig
+*.pub
+*.priv
+*.pem
+*.crt
+*.key
+*.csr
+*.req
+*.cnf
+*.ini
+*.log
+*.err
+.env
+*.env
+*.venv
