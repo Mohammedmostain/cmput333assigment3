@@ -17,6 +17,7 @@ def hashSecretKeyBlock(hexBlock:bytes) -> bytes:
     takes a 256-bit block (32-bytes) in hex, and applies SHA3-256 hash function 64 times
     returns the hashed block    
     '''
+    # todo: isnt this supposed to be 16 times?
     result = subprocess.run(
         [
             "openssl", "dgst", "-sha3-256"
@@ -34,8 +35,12 @@ def extractHashedBlock(output:bytes):
 
 def main():
     block = generateSecretKeyBlock()
-    print(block)
-    print(hashSecretKeyBlock(block))
+    sk = block
+    pk = hashSecretKeyBlock(block)
+    print(sk)
+    print(pk)
+    Path("private_key.ots").write_text(sk)
+    Path("public_key.ots").write_text(pk)
 
 if __name__ == "__main__":
     main()
