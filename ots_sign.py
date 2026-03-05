@@ -34,8 +34,8 @@ msg = args.message
 sk_ots = args.private_key
 sk_bytes = Path(sk_ots).read_bytes()
 
-byte_msg = msg.encode()
-msg_hash = sha3_256(byte_msg)
+with open(msg, "rb") as f:
+    msg_hash = sha3_256(f.read())
 
 
 d = []
